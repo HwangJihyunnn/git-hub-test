@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>탭메뉴 연습</title>
+  <script src="js/jquery-3.6.3.min.js"></script>
+  <style>
+    * {margin: 0; padding: 0;}
+    a {text-decoration: none; color: inherit;}
+    li {list-style: none;}
+
+    .tabmenu>li {width: 150px; background: #333; color: #fff; text-align: center; display: inline-block;}
+    .tabmenu>li>a {display: block; padding: 10px;}
+    .tabmenu>li.on {background: #8e5b12;}
+    .tabcon{background: #8e5b12; padding: 10px 20px; position: absolute; width: 100%; left: 0;}
+    .tabcon table th{text-align: center; padding: 20px; color: #fff; height: 35px;}
+  </style>
+</head>
+<body>
+  <div class="tab">
+    <ul class="tabmenu">
+      <li class="on"><a href="#">공지사항</a>
+      <div class="notice tabcon">
+        <table>
+          <tr>
+            <th>페어웨이 안착율 높이는 KLPGA 안근영 프로의 드라이버 스윙 꿀팁!</th>
+            <td>2023-02-23</td>
+          </tr>
+          <tr>
+            <th>페어웨이 안착율 높이는 KLPGA 안근영 프로의 드라이버 스윙 꿀팁!</th>
+            <td>2023-02-23</td>
+          </tr>
+          <tr>
+            <th>페어웨이 안착율 높이는 KLPGA 안근영 프로의 드라이버 스윙 꿀팁!</th>
+            <td>2023-02-23</td>
+          </tr>
+        </table>
+      </div>
+      </li>
+  <!-- notice -->
+      <li><a href="#">갤러리</a>
+      <div class="gall tabcon">
+        <ul>
+          <li>
+            <a href="#">
+              <img src="img/slider04.jpg" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/slider05.jpg" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/slider06.jpg" alt="">
+            </a>
+          </li>
+        </ul>
+      </div>
+      </li>
+      <!-- gall -->
+    </ul>
+  </div>
+  <!-- tab -->
+
+  <script>
+    let i =0;
+    $('.tabmenu li').click(function(){
+      $('.tabmenu li').removeClass('on');
+      $(this).addClass('on');
+
+      i = $(this).index();
+      $(".tabcon").hide();
+      $(".tabcon").eq(i).show();
+
+      return false;
+    })
+  </script>
+</body>
+</html>
