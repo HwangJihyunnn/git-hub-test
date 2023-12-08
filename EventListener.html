@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 문법</title>
+  <style>
+    * {padding: 0; margin: 0;}
+    .alert-box {background: #ccc; width: 500px; height: 500px; display: flex; justify-content: center; align-items: center; display: none; }
+    button {border: 1px solid #000; background: none; padding: 10px 30px; cursor: pointer;}
+  </style>
+</head>
+<body>
+  <div class="alert-box" id="title">alert 박스 <button class="close">X</button></div>
+  <button onClick="">버튼1</button>
+  <button onClick="">버튼2</button>
+
+  <script> //click은 이벤트이다. click안에는 click,keydown, scrill, mouseover 등을 입력할 수 있다.
+    document.querySelector('.close').addEventListener('click',function(){
+      document.querySelector('.alert-box').style.display = 'none';
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {padding: 0; margin: 0;}
+    a{text-decoration: none; color: inherit;}
+    li {list-style: none;}
+
+    .tab-menu {position: relative;}
+    .tab-menu .lists{overflow: hidden; display: flex; }
+    .tab-menu .lists li {margin-right: 10px; border-bottom: 2px solid #333;}
+    .tab-menu .list .tab-list-on {font-weight: bold; color: #000;}
+    .tab-menu .cont {position: absolute; top: 25px; left: 0; background: #ccc; text-align: center; width: 250px; height: 100px; margin-top: -2px; display: none;}
+  </style>
+</head>
+<body>
+    <div class="tab-menu">
+      <ul class="lists">
+        <li class="tab-list-on">
+          <a href="#tab1" class="btn">첫번째 탭</a>
+        </li>
+        <li>
+          <a href="#tab2" class="btn">두번째 탭</a>
+        </li>
+        <li>
+          <a href="#tab3" class="btn">세번째 탭</a>
+        </li>
+      </ul>
+      
+      <div class="cont-box">
+        <div id="tab1" class="cont" style="display: block;">첫번째 내용</div>
+        <div id="tab2" class="cont">두번째 내용</div>
+        <div id="tab3" class="cont">세번째 내용</div>
+      </div>
+    </div>
+  <script>
+    const tabMenu = document.querySelectorAll(".tab-menu .lists li");
+    const cont = document.querySelectorAll(".tab-menu .cont-box .cont");
+
+    let actiVate = ''; 
+
+    for(let i =0; i<tabMenu.length; i++){
+      tabMenu[i].querySelector('.btn').addEventListener('click',function(e){
+        e.preventDefault();
+        for(let j =0; j < tabMenu.length; j++){
+          tabMenu[j].classList.remove('tab-list-on');
+
+          cont[j].style.display = 'none';
+        }
+        this.parentNode.classList.add('tab-list-on');
+        actiVate = this.getAttribute('href');
+        document.querySelector(actiVate).style.display = 'block';
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+
+

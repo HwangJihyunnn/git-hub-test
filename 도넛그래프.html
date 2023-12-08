@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+     /* 도넛 */
+    .container{
+      display: flex;
+      gap: 20px;
+      padding: 5%;
+    }
+    .chart {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      transition: 0.5s linear;
+      background: #000;
+    }
+    span.center{
+      background: #fff;
+      display: flex;
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      text-align: center; justify-content: center; align-items: center; vertical-align: middle;
+      width: 80px; height: 80px; border-radius: 50%;
+    }
+    button{
+      width: 80px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 여기부터 도넛입니다. 컨테이너안에 -->
+    <!-- 3개의 chart가 도넛이 될것입니다. -->
+    <!-- reset버튼을 누르면 그래프가 다시 찹니다. -->
+    <!-- css로 넘어가겠습니다. -->
+    <div class="container">
+      <div class="chart"><span class="center"></span></div>
+      <div class="chart"><span class="center"></span></div>
+      <div class="chart"><span class="center"></span></div>
+    </div>
+    <button id="resetBtn">r e s e t 버 튼</button>
+
+    <script>
+        // 도넛
+  function colorFn(value, object,color) {
+    object.style.background = `conic-gradient(${color} 0% ${value}%, #dedede ${value}% 100%)`;
+  }
+  function makeChart(percent,object, color) {
+    let i =0;
+    let chartFn = setInterval(function(){
+      if( i <= percent) {
+        colorFn(i,object,color);
+        i++;
+      } else {
+        clearInterval(chartFn);
+      }
+    },10);
+  }
+
+  let percents = [45,54,33];
+  let colors = ["red","blue","green"];
+
+  const charts = document.querySelectorAll(".chart");
+  charts.forEach(function(item,index) {
+    item.querySelector(".center").innerHTML = percents[index] + "%";
+    makeChart(percents[index],item,colors[index]);
+  })
+  
+  document.querySelector("#resetBtn").onclick = function(){
+    charts.forEach(function(item,index){
+      makeChart(percents[index],item,colors[index]);
+    })
+  }
+    </script>
+</body>
+</html>

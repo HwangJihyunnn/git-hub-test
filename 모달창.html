@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모달창 연습</title>
+  <style>
+    * {padding: 0; margin: 0;}
+    .alert-box {background: #ccc; width: 500px; height: 500px; display: flex; justify-content: center; align-items: center; display: none; }
+    button {border: 1px solid #000; background: none; padding: 10px 30px; cursor: pointer;}
+  </style>
+</head>
+
+<body>
+  <div class="alert-box" id="title">alert 박스 <button class="close" onClick="modal('none')"></button>닫기</div>
+  <button class="open" onClick="modal1('아이디를 입력하세요.')">버튼1</button>
+  <button class="open" onClick="modal1('비번을 입력하세요');">버튼2</button>
+
+  <script>
+    //파라미터 = 구멍뚫기 구멍에 기능 넣을 수 있음 -코드가 더 줄어들 수 있음.
+/*     function modal(aa){
+      document.querySelector('.alert-box').style.display = aa;
+    };
+    modal('block');
+    modal('none'); */
+
+    //파라미터 연습
+    function modal1(구멍){
+      document.querySelector('#title').innerHTML=구멍;
+      document.querySelector('.alert-box').style.display='block';
+  };
+
+    //function
+/*     function modal(){
+      document.querySelector('.alert-box').style.display = 'block';
+    };
+    function xbox(){
+      document.querySelector('.alert-box').style.display = 'none';
+    }; */
+
+
+
+    //길게 풀어쓰면 
+/* document.querySelector('.open').addEventListener('click',function(){
+      document.querySelector('.alert-box').style.display = 'block';
+      document.querySelector('.alert-box > .close').addEventListener('click',function(){
+        document.querySelector('.alert-box').style.display = 'none';
+      });
+    }); */
+    
+  </script>
+</body>
+</html>
